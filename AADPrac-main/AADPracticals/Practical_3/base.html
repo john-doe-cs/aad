@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="formValidationApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Validation with AngularJS</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body>
+
+<div ng-controller="FormController as formCtrl">
+    <form name="userForm" ng-submit="formCtrl.submitForm(userForm.$valid)" novalidate>
+        <div>
+            <label>Name:</label>
+            <input type="text" name="name" ng-model="formCtrl.userData.name" required>
+            <span ng-show="userForm.name.$error.required && userForm.name.$dirty">Name is required!</span>
+        </div>
+        <div>
+            <label>Email:</label>
+            <input type="email" name="email" ng-model="formCtrl.userData.email" required>
+            <span ng-show="userForm.email.$error.required && userForm.email.$dirty">Email is required!</span>
+            <span ng-show="userForm.email.$error.email && userForm.email.$dirty">Invalid email format!</span>
+        </div>
+        <div>
+            <label>Password:</label>
+            <input type="password" name="password" ng-model="formCtrl.userData.password" ng-minlength="6" required>
+            <span ng-show="userForm.password.$error.required && userForm.password.$dirty">Password is required!</span>
+            <span ng-show="userForm.password.$error.minlength && userForm.password.$dirty">Password should be at least 6 characters!</span>
+        </div>
+        <div>
+            <label>Confirm Password:</label>
+            <input type="password" name="confirmPassword" ng-model="formCtrl.userData.confirmPassword" ng-minlength="6" required 
+                   ng-pattern="formCtrl.userData.password" ng-disabled="!formCtrl.userData.password || formCtrl.userData.password !== formCtrl.userData.confirmPassword">
+            <span ng-show="userForm.confirmPassword.$error.required && userForm.confirmPassword.$dirty">Confirm Password is required!</span>
+            <span ng-show="userForm.confirmPassword.$error.minlength && userForm.confirmPassword.$dirty">Confirm Password should be at least 6 characters!</span>
+            <span ng-show="userForm.confirmPassword.$error.pattern && userForm.confirmPassword.$dirty">Passwords do not match!</span>
+        </div>
+        <div>
+            <label>Phone:</label>
+            <input type="text" name="phone" ng-model="formCtrl.userData.phone" ng-pattern="/^\d{10}$/" required>
+            <span ng-show="userForm.phone.$error.required && userForm.phone.$dirty">Phone is required!</span>
+            <span ng-show="userForm.phone.$error.pattern && userForm.phone.$dirty">Phone should be 10 digits!</span>
+        </div>
+        <div>
+            <button type="submit" ng-disabled="userForm.$invalid">Submit</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    angular.module('formValidationApp', [])
+        .controller('FormController', function () {
+            var vm = this;
+            vm.userData = {};
+
+            vm.submitForm = function (isValid) {
+                if (isValid) {
+                    alert('Form submitted successfully!');
+                    // You can perform further actions like sending data to the server
+                } else {
+                    alert('Form has errors. Please correct them before submitting.');
+                }
+            };
+        });
+</script>
+
+</body>
+</html>

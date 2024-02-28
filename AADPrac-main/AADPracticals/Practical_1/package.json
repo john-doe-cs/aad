@@ -1,0 +1,16 @@
+{
+  "name": "practical_1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "MongoDB_Datamodel.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node MongoDB_Datamodel.js"
+  },
+  "author": "Aman",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^6.3.0",
+    "nodemon": "^3.1.0"
+  }
+}

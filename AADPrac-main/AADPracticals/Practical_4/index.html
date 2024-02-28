@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>AngularJS Modules and Controllers Example</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body>
+
+<div ng-controller="HomeController">
+    <h1>Welcome to our website</h1>
+    <p>{{ message }}</p>
+</div>
+
+<div ng-controller="ProductController">
+    <h2>Our Products</h2>
+    <ul>
+        <li ng-repeat="product in products">{{ product.name }} - {{ product.price }}</li>
+    </ul>
+</div>
+
+<script>
+    // Define a module named 'myApp'
+    angular.module('myApp', [])
+
+    // Define a controller named 'HomeController'
+    .controller('HomeController', function($scope) {
+        $scope.message = "Explore our amazing products!";
+    })
+
+    // Define another controller named 'ProductController'
+    .controller('ProductController', function($scope) {
+        $scope.products = [
+            { name: 'Laptop', price: 999 },
+            { name: 'Smartphone', price: 599 },
+            { name: 'Tablet', price: 399 }
+        ];
+    });
+</script>
+
+</body>
+</html>

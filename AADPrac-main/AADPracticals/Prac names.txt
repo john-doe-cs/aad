@@ -1,0 +1,15 @@
+1) Write a program to implement MongoDB data models
+ 
+2) Write a program to implement CRUD operations on MongoDB 
+
+3) Write a program to perform validation of a form using AngularJS 
+
+4) Write a program to create and implement modules and controllers in Angular JS 
+
+5) Write a program to implement Error Handling in Angular JS 
+
+6) Create an application for Customer / Students records using AngularJS 
+
+7) Write a program to create a simple web application using Express, Node JS and Angular JS 
+
+8) Create a simple HTML “Hello World” Project using AngularJS Framework and apply ng-controller, ng-model and expressions 
